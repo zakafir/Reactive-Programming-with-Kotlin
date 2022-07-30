@@ -77,8 +77,20 @@ class MainActivity : AppCompatActivity() {
         } else {
           collageImage.setImageResource(android.R.color.transparent)
         }
+        updateUi(photos)
       }
     })
+  }
+  
+  fun updateUi(photos: List<Photo>) {
+    saveButton.isEnabled = photos.isNotEmpty() && photos.size % 2 == 0
+    clearButton.isEnabled = photos.isNotEmpty()
+    addButton.isEnabled = photos.size < 6
+    title = if(photos.isNotEmpty()) {
+      resources.getQuantityString(R.plurals.photos_format, photos.size, photos.size)
+    } else {
+      getString(R.string.collage)
+    }
   }
 
   private fun actionAdd() {
