@@ -33,6 +33,7 @@ package com.raywenderlich.android.combinestagram
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
@@ -73,6 +74,8 @@ class MainActivity : AppCompatActivity() {
           collageImage.setImageDrawable(
             BitmapDrawable(resources, newBitmap)
           )
+        } else {
+          collageImage.setImageResource(android.R.color.transparent)
         }
       }
     })
@@ -83,7 +86,7 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun actionClear() {
-    println("actionClear")
+    viewModel.clearPhotos()
   }
 
   private fun actionSave() {

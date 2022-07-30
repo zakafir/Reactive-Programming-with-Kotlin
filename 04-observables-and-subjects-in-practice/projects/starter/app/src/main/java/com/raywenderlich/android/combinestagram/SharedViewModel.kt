@@ -70,6 +70,11 @@ class SharedViewModel : ViewModel() {
     imagesSubject.value?.add(photo)
     imagesSubject.onNext(imagesSubject.value)
   }
+  
+  fun clearPhotos() {
+    imagesSubject.value?.clear()
+    imagesSubject.onNext(imagesSubject.value)
+  }
 
   fun saveBitmapFromImageView(imageView: ImageView, context: Context) {
     val tmpImg = "${System.currentTimeMillis()}.png"
